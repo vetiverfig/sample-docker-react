@@ -1,4 +1,4 @@
-FROM node:latest as builder
+FROM node:latest
 # Above, we set the base image for this first stage as a light weigh node
 
 WORKDIR '/app'
