@@ -1,4 +1,3 @@
-#Split everything the build into two steps
 FROM node:latest as builder
 # Above, we set the base image for this first stage as a light weigh node
 
