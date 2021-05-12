@@ -1,0 +1,22 @@
+sudo: required language: node_js
+node_js:
+    - "stable"
+    
+services: 
+    - docker
+before_install: 
+    - docker build -t yuwangjr/sample-app -f Dockerfile.dev .
+script:     
+    - docker run -e CI=true yuwangjr/sample-app npm run test -- --coverage --watchAll=false
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "sample-docker-react"
+  env: "Sampledockerreact-env" ### Your EB App environment name
+  bucket_name: "elasticbeanstalk-us-east-1-780390497435"
+  bucket_path: "EBApptest"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
