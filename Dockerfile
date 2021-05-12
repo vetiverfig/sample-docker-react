@@ -1,6 +1,6 @@
 #Split everything the build into two steps
-FROM node:alpine as builder
-# Above, we set the base image for this first stage as a light weigh node called alpine
+FROM node:latest as builder
+# Above, we set the base image for this first stage as a light weigh node
 
 WORKDIR '/app'
 # Above we set the build environment as a folder called /app in the docker container to prevent clashes
